@@ -23,7 +23,7 @@ export async function run() {
 
     process.env.COVERALLS_REPO_TOKEN = githubToken;
 
-    // process.env.COVERALLS_SERVICE_NAME = 'github';
+    process.env.COVERALLS_SERVICE_NAME = 'github-action';
     process.env.COVERALLS_GIT_COMMIT = process.env.GITHUB_SHA!.toString();
     process.env.COVERALLS_GIT_BRANCH = process.env.GITHUB_REF!.toString();
     process.env.COVERALLS_FLAG_NAME = process.env.COVERALLS_FLAG_NAME || core.getInput('flag-name');
@@ -56,7 +56,7 @@ export async function run() {
     }
 
     const runId = process.env.GITHUB_RUN_ID;
-    // process.env.COVERALLS_SERVICE_JOB_ID = runId;
+    process.env.COVERALLS_SERVICE_JOB_ID = runId;
 
     if(core.getInput('parallel-finished') != '') {
       const payload = {
